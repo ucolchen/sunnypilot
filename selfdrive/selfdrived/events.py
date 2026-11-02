@@ -569,7 +569,7 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
   EventName.noGps: {
   },
 
-  EventName.tooDistracted: {    ET.NO_ENTRY: NoEntryAlert("Distraction Level Too High"),
+  EventName.tooDistracted: {    
   },
 
   EventName.excessiveActuation: {
