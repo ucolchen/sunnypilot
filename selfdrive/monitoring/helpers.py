@@ -358,7 +358,9 @@ class DriverMonitoring:
       # also will not be reaching 0 if DM is active when not engaged
       if not (standstill_orange_exemption or always_on_red_exemption or (always_on_lowspeed_exemption and _reaching_audible)):
         self.awareness = max(self.awareness - self.step_change, -0.1)
-
+    
+    self._reset_awareness() #11/5/26 qd
+    
     alert = None
     if self.awareness <= 0.:
       # terminal red alert: disengagement required
@@ -373,7 +375,6 @@ class DriverMonitoring:
       # pre green alert
       alert = EventName.preDriverDistracted if self.active_monitoring_mode else EventName.preDriverUnresponsive
 
-    alert = None #11/5/26 qd
     if alert is not None:
       self.current_events.add(alert)
 
